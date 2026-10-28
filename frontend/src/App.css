@@ -2,116 +2,332 @@
   box-sizing: border-box;
 }
 
+:root {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  color: #172033;
+  background: #f5f7fb;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f4f7fb;
-  color: #222;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(99, 102, 241, 0.12), transparent 32%),
+    radial-gradient(circle at top right, rgba(14, 165, 233, 0.1), transparent 28%),
+    #f5f7fb;
 }
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+select {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+/* =========================
+   MAIN APP
+========================= */
 
 .app {
   min-height: 100vh;
 }
 
+/* =========================
+   HEADER
+========================= */
+
 header {
-  background: #2563eb;
+  position: relative;
+  overflow: hidden;
+  padding: 55px 20px 65px;
   color: white;
-  padding: 35px 20px;
   text-align: center;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.2), transparent 25%),
+    radial-gradient(circle at 85% 80%, rgba(255, 255, 255, 0.12), transparent 25%),
+    linear-gradient(135deg, #4f46e5 0%, #2563eb 48%, #0891b2 100%);
+  box-shadow: 0 10px 35px rgba(37, 99, 235, 0.2);
+}
+
+header::before,
+header::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+header::before {
+  width: 260px;
+  height: 260px;
+  top: -150px;
+  left: -80px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+header::after {
+  width: 320px;
+  height: 320px;
+  right: -120px;
+  bottom: -220px;
+  background: rgba(255, 255, 255, 0.08);
 }
 
 header h1 {
-  margin: 0 0 8px;
+  position: relative;
+  z-index: 1;
+  margin: 0 0 10px;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  letter-spacing: -1.5px;
 }
 
 header p {
+  position: relative;
+  z-index: 1;
   margin: 0;
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.9);
 }
+
+/* =========================
+   MAIN
+========================= */
 
 main {
-  width: 92%;
-  max-width: 1100px;
-  margin: 25px auto;
+  width: min(1150px, 92%);
+  margin: -30px auto 50px;
+  position: relative;
+  z-index: 2;
 }
 
-.form-card,
-.applications {
-  background: white;
-  padding: 25px;
+/* =========================
+   SUCCESS / ERROR MESSAGE
+========================= */
+
+.message {
+  padding: 15px 18px;
+  margin-bottom: 20px;
+  border: 1px solid #bae6fd;
   border-radius: 12px;
-  margin-bottom: 25px;
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+  background: #f0f9ff;
+  color: #075985;
+  font-weight: 600;
+  box-shadow: 0 5px 18px rgba(15, 23, 42, 0.06);
 }
+
+/* =========================
+   FORM CARD
+========================= */
+
+.form-card {
+  padding: 30px;
+  margin-bottom: 28px;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 12px 35px rgba(15, 23, 42, 0.08);
+}
+
+.form-card h2 {
+  margin: 0 0 24px;
+  font-size: 1.45rem;
+  color: #172033;
+}
+
+/* =========================
+   FORM
+========================= */
 
 form {
   display: grid;
-  gap: 14px;
+  gap: 16px;
 }
 
 input,
 select,
 textarea {
   width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 7px;
+  padding: 13px 15px;
+  border: 1px solid #dbe2ea;
+  border-radius: 10px;
+  outline: none;
+  background: #fff;
+  color: #172033;
   font-size: 15px;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
 }
 
-textarea {
-  min-height: 90px;
-  resize: vertical;
+input::placeholder,
+textarea::placeholder {
+  color: #94a3b8;
 }
 
-button {
-  border: none;
-  border-radius: 7px;
-  padding: 11px 16px;
-  cursor: pointer;
-  background: #2563eb;
-  color: white;
-  font-size: 14px;
+input:hover,
+select:hover,
+textarea:hover {
+  border-color: #b8c4d3;
 }
 
-button:disabled {
-  background: #aaa;
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+}
+
+input:disabled {
+  background: #f1f5f9;
+  color: #64748b;
   cursor: not-allowed;
 }
 
-.form-buttons,
-.actions {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
+textarea {
+  min-height: 110px;
+  resize: vertical;
 }
 
-.message {
-  background: #e0f2fe;
-  padding: 14px;
-  border-radius: 7px;
-  margin-bottom: 20px;
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+  border: none;
+  border-radius: 10px;
+  padding: 12px 18px;
+  background: linear-gradient(135deg, #4f46e5, #2563eb);
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 5px 14px rgba(37, 99, 235, 0.2);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
 }
+
+button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.28);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+button:disabled {
+  background: #cbd5e1;
+  color: #64748b;
+  box-shadow: none;
+}
+
+/* Form buttons */
+
+.form-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.form-buttons button[type="button"] {
+  background: #e2e8f0;
+  color: #334155;
+  box-shadow: none;
+}
+
+.form-buttons button[type="button"]:hover {
+  background: #cbd5e1;
+}
+
+/* =========================
+   STATISTICS
+========================= */
 
 .stats {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 12px;
-  margin-bottom: 25px;
+  gap: 14px;
+  margin-bottom: 28px;
 }
 
 .stats div {
+  position: relative;
+  overflow: hidden;
+  padding: 20px 12px;
+  border: 1px solid #e5eaf1;
+  border-radius: 16px;
   background: white;
-  padding: 18px 10px;
   text-align: center;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: 0 7px 22px rgba(15, 23, 42, 0.06);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.stats div::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #4f46e5, #06b6d4);
+}
+
+.stats div:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.1);
 }
 
 .stats strong {
   display: block;
-  font-size: 24px;
-  margin-top: 5px;
+  margin-top: 8px;
+  color: #172033;
+  font-size: 28px;
+  font-weight: 800;
 }
+
+/* =========================
+   APPLICATIONS SECTION
+========================= */
+
+.applications {
+  padding: 30px;
+  border: 1px solid #e5eaf1;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 12px 35px rgba(15, 23, 42, 0.08);
+}
+
+.applications > h2 {
+  margin: 0 0 22px;
+  font-size: 1.55rem;
+  color: #172033;
+}
+
+/* =========================
+   SEARCH + FILTER
+========================= */
 
 .filters {
   display: grid;
@@ -120,69 +336,286 @@ button:disabled {
   margin-bottom: 25px;
 }
 
+/* =========================
+   APPLICATION CARD
+========================= */
+
 .application-card {
-  border: 1px solid #ddd;
-  padding: 20px;
-  border-radius: 10px;
-  margin-top: 15px;
+  position: relative;
+  padding: 23px;
+  margin-top: 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #ffffff 0%, #fbfcff 100%);
+  box-shadow: 0 5px 18px rgba(15, 23, 42, 0.05);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
 }
+
+.application-card:hover {
+  transform: translateY(-3px);
+  border-color: #c7d2fe;
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.09);
+}
+
+/* Small decorative line */
+
+.application-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  border-radius: 16px 0 0 16px;
+  background: linear-gradient(180deg, #4f46e5, #06b6d4);
+}
+
+/* =========================
+   CARD HEADER
+========================= */
 
 .card-top {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 15px;
+  gap: 20px;
+  padding-left: 4px;
 }
 
 .card-top h3 {
-  margin: 0 0 5px;
+  margin: 0 0 6px;
+  color: #172033;
+  font-size: 1.25rem;
+  font-weight: 800;
 }
 
 .card-top p {
-  margin-top: 0;
+  margin: 0;
+  color: #64748b;
+  font-size: 15px;
 }
 
+/* =========================
+   STATUS BADGES
+========================= */
+
 .status {
-  padding: 7px 12px;
-  border-radius: 20px;
-  font-size: 13px;
-  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 82px;
+  padding: 7px 13px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
 }
+
+/* Applied */
 
 .status.Applied {
   background: #dbeafe;
+  border-color: #bfdbfe;
+  color: #1d4ed8;
 }
+
+/* Interview */
 
 .status.Interview {
   background: #fef3c7;
+  border-color: #fde68a;
+  color: #b45309;
 }
+
+/* Offer */
 
 .status.Offer {
   background: #ede9fe;
+  border-color: #ddd6fe;
+  color: #6d28d9;
 }
+
+/* Accepted */
 
 .status.Accepted {
   background: #dcfce7;
+  border-color: #bbf7d0;
+  color: #15803d;
 }
+
+/* Rejected */
 
 .status.Rejected,
 .status.Declined {
   background: #fee2e2;
+  border-color: #fecaca;
+  color: #b91c1c;
 }
+
+/* =========================
+   APPLICATION DETAILS
+========================= */
+
+.application-card > p {
+  margin: 12px 0;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.application-card > p strong {
+  color: #334155;
+}
+
+/* =========================
+   OVERDUE
+========================= */
 
 .overdue {
-  display: inline-block;
-  background: #dc2626;
-  color: white;
-  padding: 7px 12px;
-  border-radius: 6px;
-  font-weight: bold;
-  margin: 8px 0;
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 8px 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  background: #fee2e2;
+  color: #b91c1c;
+  font-size: 13px;
+  font-weight: 800;
+  border: 1px solid #fecaca;
 }
 
+/* =========================
+   ACTIONS
+========================= */
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid #eef2f7;
+}
+
+.actions select {
+  width: auto;
+  min-width: 145px;
+}
+
+.actions button {
+  padding: 10px 15px;
+}
+
+/* Edit */
+
+.actions button:not(:disabled) {
+  background: #eef2ff;
+  color: #4338ca;
+  box-shadow: none;
+  border: 1px solid #c7d2fe;
+}
+
+.actions button:not(:disabled):hover {
+  background: #e0e7ff;
+  box-shadow: none;
+}
+
+/* Delete */
+
+.actions button:last-child:not(:disabled) {
+  background: #fff1f2;
+  color: #be123c;
+  border-color: #fecdd3;
+}
+
+.actions button:last-child:not(:disabled):hover {
+  background: #ffe4e6;
+}
+
+/* =========================
+   STATUS HISTORY
+========================= */
+
+.application-card h4 {
+  margin: 24px 0 12px;
+  padding-top: 18px;
+  border-top: 1px solid #eef2f7;
+  color: #334155;
+  font-size: 14px;
+}
+
+.application-card h4 + p {
+  margin-top: 0;
+}
+
+.application-card div > p {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.application-card div > p strong {
+  color: #475569;
+}
+
+/* =========================
+   EMPTY STATE
+========================= */
+
+.applications > p {
+  padding: 35px 20px;
+  border: 2px dashed #dbe2ea;
+  border-radius: 14px;
+  color: #94a3b8;
+  text-align: center;
+  background: #f8fafc;
+}
+
+/* =========================
+   RESPONSIVE TABLET
+========================= */
+
+@media (max-width: 900px) {
+  .stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* =========================
+   RESPONSIVE MOBILE
+========================= */
+
 @media (max-width: 700px) {
+  header {
+    padding: 42px 18px 52px;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  main {
+    width: 94%;
+    margin-top: -22px;
+  }
+
+  .form-card,
+  .applications {
+    padding: 20px;
+    border-radius: 16px;
+  }
+
   .stats {
     grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .stats div {
+    padding: 16px 8px;
   }
 
   .filters {
@@ -191,5 +624,41 @@ button:disabled {
 
   .card-top {
     flex-direction: column;
+    gap: 12px;
+  }
+
+  .status {
+    align-self: flex-start;
+  }
+
+  .actions {
+    align-items: stretch;
+  }
+
+  .actions select,
+  .actions button {
+    width: 100%;
+  }
+}
+
+/* =========================
+   VERY SMALL SCREENS
+========================= */
+
+@media (max-width: 430px) {
+  .stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  header h1 {
+    font-size: 1.7rem;
+  }
+
+  header p {
+    font-size: 0.9rem;
+  }
+
+  .application-card {
+    padding: 18px;
   }
 }
