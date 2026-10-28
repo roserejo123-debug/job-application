@@ -1,0 +1,195 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f7fb;
+  color: #222;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+header {
+  background: #2563eb;
+  color: white;
+  padding: 35px 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0 0 8px;
+}
+
+header p {
+  margin: 0;
+}
+
+main {
+  width: 92%;
+  max-width: 1100px;
+  margin: 25px auto;
+}
+
+.form-card,
+.applications {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+form {
+  display: grid;
+  gap: 14px;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  font-size: 15px;
+}
+
+textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+button {
+  border: none;
+  border-radius: 7px;
+  padding: 11px 16px;
+  cursor: pointer;
+  background: #2563eb;
+  color: white;
+  font-size: 14px;
+}
+
+button:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+.form-buttons,
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.message {
+  background: #e0f2fe;
+  padding: 14px;
+  border-radius: 7px;
+  margin-bottom: 20px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.stats div {
+  background: white;
+  padding: 18px 10px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+}
+
+.stats strong {
+  display: block;
+  font-size: 24px;
+  margin-top: 5px;
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.application-card {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.card-top h3 {
+  margin: 0 0 5px;
+}
+
+.card-top p {
+  margin-top: 0;
+}
+
+.status {
+  padding: 7px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.status.Applied {
+  background: #dbeafe;
+}
+
+.status.Interview {
+  background: #fef3c7;
+}
+
+.status.Offer {
+  background: #ede9fe;
+}
+
+.status.Accepted {
+  background: #dcfce7;
+}
+
+.status.Rejected,
+.status.Declined {
+  background: #fee2e2;
+}
+
+.overdue {
+  display: inline-block;
+  background: #dc2626;
+  color: white;
+  padding: 7px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  margin: 8px 0;
+}
+
+@media (max-width: 700px) {
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .filters {
+    grid-template-columns: 1fr;
+  }
+
+  .card-top {
+    flex-direction: column;
+  }
+}
